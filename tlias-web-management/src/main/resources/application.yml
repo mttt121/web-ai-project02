@@ -1,0 +1,29 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  application:
+    name: tlias-web-management
+  # 前端表单里没填的日期字段会传空字符串 ""，允许它按 null 处理，否则 graduationDate 为空时直接报错
+  jackson:
+    deserialization:
+      accept-empty-string-as-null-object: true
+  #mysql连接配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tlias
+    username: root
+    password: 122112
+# 阿里云OSS配置
+aliyun:
+  oss:
+    region: cn-beijing
+    bucket: java-web-ai-mt
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
